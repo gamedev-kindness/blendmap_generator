@@ -1,0 +1,85 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://generator/gui/target_edit.gd" type="Script" id=1]
+[ext_resource path="res://generator/gui/fonts/DroidSansFallback.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://generator/gui/select_mesh_scene.tscn" type="PackedScene" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+
+size = 32
+font_data = ExtResource( 2 )
+
+[node name="mesh_group_edit" type="PopupDialog"]
+visible = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="vb" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Label" type="Label" parent="vb"]
+margin_right = 1024.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 1 )
+text = "TargetName"
+
+[node name="MeshList" type="ItemList" parent="vb"]
+margin_top = 47.0
+margin_right = 1024.0
+margin_bottom = 552.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="hb" type="HBoxContainer" parent="vb"]
+margin_top = 556.0
+margin_right = 1024.0
+margin_bottom = 576.0
+
+[node name="base_label" type="Label" parent="vb/hb"]
+margin_top = 3.0
+margin_right = 405.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Select"
+
+[node name="add_base" type="Button" parent="vb/hb"]
+margin_left = 409.0
+margin_right = 506.0
+margin_bottom = 20.0
+text = "Select base..."
+
+[node name="target_label" type="Label" parent="vb/hb"]
+margin_left = 510.0
+margin_top = 3.0
+margin_right = 915.0
+margin_bottom = 17.0
+size_flags_horizontal = 3
+text = "Select"
+
+[node name="add_target" type="Button" parent="vb/hb"]
+margin_left = 919.0
+margin_right = 1023.0
+margin_bottom = 20.0
+text = "Select target..."
+
+[node name="Close" type="Button" parent="vb"]
+margin_top = 580.0
+margin_right = 1024.0
+margin_bottom = 600.0
+text = "Close"
+
+[node name="open_scene" type="FileDialog" parent="."]
+margin_right = 216.0
+margin_bottom = 130.0
+window_title = "Открыть файл"
+mode = 0
+filters = PoolStringArray( "*.tscn ; scene", "*.dae ; scene", "*.scn; scene" )
+current_dir = "res://generator"
+current_file = "characters"
+current_path = "res://generator/characters"
+
+[node name="select_mesh_scene" parent="." instance=ExtResource( 3 )]
+visible = false
+
